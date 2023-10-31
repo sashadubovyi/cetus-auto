@@ -241,13 +241,18 @@ main {
   overflow: hidden;
 }
 
-.video-container video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  object-fit: cover;
+.video-container .video {
+  display: none;
 }
+
+/* .video-container .video {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    object-fit: cover;
+  } */
 
 .video-title {
   position: absolute;
