@@ -1,7 +1,7 @@
 body {
   margin-left: auto;
   margin-right: auto;
-  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-family: "Raleway", sans-serif;
   background-color: rgb(27, 29, 30);
   color: aliceblue;
 }
@@ -14,13 +14,13 @@ h5,
 h6,
 p {
   margin: 0;
-  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
 a {
   text-decoration: none;
   color: inherit;
-  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
 ul,
@@ -29,7 +29,7 @@ ol {
   list-style: none;
   margin: 0;
   padding: 0;
-  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
 img {
@@ -46,14 +46,18 @@ button {
   display: flex;
   justify-content: center;
   color: aliceblue;
-  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
 .container {
-  padding-left: 15px;
-  padding-right: 15px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.title {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 600;
 }
 
 .header {
@@ -61,20 +65,33 @@ button {
   width: 100%;
   display: flex;
   flex-direction: row;
-  height: 40px;
+  height: 55px;
   justify-content: space-between;
   align-items: center;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  /* padding-top: 15px; */
+  /* padding-bottom: 15px; */
+  padding-left: 15px;
+  padding-right: 15px;
   border-bottom: 1px solid rgba(49, 53, 55, 0.487);
   background-color: rgb(27, 29, 30);
   z-index: 10;
 }
 
+.logo-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .logo {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 700;
   text-transform: uppercase;
+}
+
+.logo-text {
+  font-size: 12px;
+  font-weight: 100;
 }
 
 .phone {
@@ -97,7 +114,6 @@ main {
   gap: 25px;
   justify-content: center;
   align-items: stretch;
-  padding-bottom: 50px;
 }
 
 .our-service-btn,
@@ -107,9 +123,7 @@ main {
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  padding-left: 40px;
-  padding-right: 40px;
-  border: 1px solid rgb(41, 40, 40);
+  background-color: rgba(41, 40, 40, 0.805);
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -126,7 +140,7 @@ main {
 
 .service-list {
   padding-top: 25px;
-  display: none;
+  display: grid;
   grid-template-columns: 1fr;
   gap: 50px;
 }
@@ -166,11 +180,26 @@ main {
 
 .contacts-container {
   padding-top: 25px;
-  display: none;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 30px;
+  background-image: url("../image/pic/contacts-bcg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Кольором тло з непрозорістю */
+  }
 }
 
 .contacts {
@@ -188,13 +217,14 @@ main {
 
 .map {
   position: relative;
-  left: -15px;
+  left: 0px;
   width: 100vw;
   display: flex;
   flex-direction: column;
   gap: 25px;
   align-items: center;
   justify-content: center;
+  padding-bottom: 50px;
 }
 
 .worh-hours-container {
@@ -202,4 +232,72 @@ main {
   flex-direction: column;
   gap: 10px;
   padding-bottom: 30px;
+}
+
+.video-container {
+  position: relative;
+  height: calc(100vh - 55px);
+  top: 0;
+  overflow: hidden;
+}
+
+.video-container video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  object-fit: cover;
+}
+
+.video-title {
+  position: absolute;
+  z-index: 5;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 80px;
+}
+
+.video-text {
+  position: absolute;
+  z-index: 5;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+}
+
+.video-address {
+  position: absolute;
+  z-index: 5;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 210px;
+  text-align: center;
+}
+
+.video-svg-mouse {
+  position: absolute;
+  z-index: 5;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 45px;
+}
+
+/*  */
+.footer-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  height: 55px;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-bottom: 1px solid rgba(49, 53, 55, 0.487);
+  background-color: rgb(27, 29, 30);
 }
