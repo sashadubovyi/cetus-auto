@@ -321,7 +321,7 @@ main {
 }
 .mobile-menu {
   width: 100vw;
-  height: 42vh;
+  height: 70vh;
   position: fixed;
   top: 0;
   left: 0;
@@ -331,11 +331,11 @@ main {
   z-index: 5;
   padding-top: 10px;
   display: none;
+  overflow: hidden;
 }
 
 .mobile-container {
   width: 100%;
-  height: 100vh;
   padding-top: 70px;
   padding-left: 10%;
   padding-right: 10%;
@@ -427,6 +427,10 @@ main {
     flex-direction: row;
     justify-content: space-around;
   }
+  .mobile-menu {
+    padding-top: 50px;
+    height: 40vh;
+  }
 }
 
 @media only screen and (min-width: 1440px) {
@@ -469,5 +473,8 @@ main {
     overflow: hidden;
     z-index: 999;
     position: relative;
+  }
+  .mobile-menu {
+    height: 55vh;
   }
 }

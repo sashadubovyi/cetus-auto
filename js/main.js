@@ -4,6 +4,7 @@
 
 const mobileMenu = document.querySelector(".mobile-menu");
 const openMenuBtn = document.querySelector(".open-mobile-menu-btn");
+const container = document.querySelector(".mobile-menu.visible");
 
 openMenuBtn.addEventListener("click", toggleMenu);
 
@@ -19,6 +20,7 @@ function toggleMenu() {
         </g>
       </svg>
     `;
+    body.style.overflow = "auto";
   } else {
     mobileMenu.classList.add("visible");
     openMenuBtn.innerHTML = `
@@ -30,6 +32,7 @@ function toggleMenu() {
         </g>
       </svg>
     `;
+    body.style.overflow = "hidden";
   }
 }
 
@@ -66,10 +69,6 @@ const swiper = new Swiper(".swiper", {
   loop: true,
   spaceBetween: 10,
   centeredSlides: true,
-  autoplay: {
-    delay: 3500,
-    disableOnInteraction: false,
-  },
   breakpoints: {
     768: {
       slidesPerView: 2,
