@@ -1,63 +1,94 @@
 /////////////////////
-/////servise list
+/////mobile menu
 /////////////////////
 
-// const serviceList = document.querySelector(".service-list");
-// const listBtn = document.querySelector(".our-service-btn");
-// const svg = document.querySelector(".service-svg-container");
+const mobileMenu = document.querySelector(".mobile-menu");
+const openMenuBtn = document.querySelector(".open-mobile-menu-btn");
 
-// let isOpenList = false;
-// listBtn.addEventListener("click", openList);
+openMenuBtn.addEventListener("click", toggleMenu);
 
-// function openList() {
-//   if (!isOpenList) {
-//     isOpenList = true;
-//     serviceList.style.display = "grid";
-//     svg.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="svg-arrow" width="24" height="24"><path d="m12 6.586-8.707 8.707 1.414 1.414L12 9.414l7.293 7.293 1.414-1.414L12 6.586z"/></svg>`;
-//   } else {
-//     isOpenList = false;
-//     serviceList.style.display = "none";
-//     svg.innerHTML = `<svg
-//               class="svg-arrow"
-//               xmlns="http://www.w3.org/2000/svg"
-//               width="24"
-//               height="24"
-//             >
-//               <path
-//                 d="M12 17.414 3.293 8.707l1.414-1.414L12 14.586l7.293-7.293 1.414 1.414L12 17.414z"
-//               />
-//             </svg>`;
-//   }
-// }
+function toggleMenu() {
+  if (mobileMenu.classList.contains("visible")) {
+    mobileMenu.classList.remove("visible");
+    openMenuBtn.innerHTML = `
+      <svg class="menu-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+        <g id="SVGRepo_iconCarrier">
+          <path d="M4 6H20M4 12H20M4 18H20" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+      </svg>
+    `;
+  } else {
+    mobileMenu.classList.add("visible");
+    openMenuBtn.innerHTML = `
+      <svg class="menu-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+        <g id="SVGRepo_iconCarrier">
+          <path d="M6 18L18 6M6 6l12 12" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+      </svg>
+    `;
+  }
+}
 
 /////////////////////
-/////contacts list
+/////scroll page
 /////////////////////
 
-// const contactsList = document.querySelector(".contacts-container");
-// const contactsOpenBtn = document.querySelector(".contacts-btn");
-// const arrowContacts = document.querySelector(".contacts-svg-container");
+const anchorLinks = document.querySelectorAll('a[href^="#"]');
 
-// let isOpenContacts = false;
-// contactsOpenBtn.addEventListener("click", openContacts);
+function smoothScroll(event) {
+  event.preventDefault();
+  const targetId = this.getAttribute("href").substring(1);
+  const targetElement = document.getElementById(targetId);
+  if (targetElement) {
+    const yOffset = targetElement.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo({
+      top: yOffset,
+      behavior: "smooth",
+    });
+    toggleMenu();
+  }
+}
 
-// function openContacts() {
-//   if (!isOpenContacts) {
-//     isOpenContacts = true;
-//     contactsList.style.display = "flex";
-//     arrowContacts.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="svg-arrow" width="24" height="24"><path d="m12 6.586-8.707 8.707 1.414 1.414L12 9.414l7.293 7.293 1.414-1.414L12 6.586z"/></svg>`;
-//   } else {
-//     isOpenContacts = false;
-//     contactsList.style.display = "none";
-//     arrowContacts.innerHTML = `<svg
-//               class="svg-arrow"
-//               xmlns="http://www.w3.org/2000/svg"
-//               width="24"
-//               height="24"
-//             >
-//               <path
-//                 d="M12 17.414 3.293 8.707l1.414-1.414L12 14.586l7.293-7.293 1.414 1.414L12 17.414z"
-//               />
-//             </svg>`;
-//   }
-// }
+anchorLinks.forEach((link) => {
+  link.addEventListener("click", smoothScroll);
+});
+
+/////////////////////
+/////swiper insta
+/////////////////////
+
+const swiper = new Swiper(".swiper", {
+  direction: "horizontal",
+  loop: true,
+  spaceBetween: 10,
+  centeredSlides: true,
+  autoplay: {
+    delay: 3500,
+    disableOnInteraction: false,
+  },
+  breakpoints: {
+    768: {
+      slidesPerView: 2,
+      spaceBetween: 20,
+    },
+    1024: {
+      centeredSlides: false,
+      slidesPerView: 3,
+      spaceBetween: 30,
+    },
+    1440: {
+      centeredSlides: false,
+      slidesPerView: 4,
+      spaceBetween: 30,
+    },
+  },
+
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+});
